@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pvcFXML.OpenFileFXMLController">
+   <children>
+      <Button fx:id="openButton" defaultButton="true" layoutX="73.0" layoutY="344.0" mnemonicParsing="false" onAction="#openFile" text="Отвори" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="198.0" />
+      <Button fx:id="closeButton" cancelButton="true" layoutX="191.0" layoutY="347.0" mnemonicParsing="false" onAction="#closeWindow" text="Откажи" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="198.0" AnchorPane.rightAnchor="80.0" />
+      <ListView fx:id="filesListView" layoutX="34.0" layoutY="33.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0" />
+   </children>
+</AnchorPane>

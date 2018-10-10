@@ -1,0 +1,12 @@
+The purpose of this application is to help window and frame manufacturers in managing orders received from clients and partners through the following GUI functionalities: 
+
+	1) creating new list of items ordered by a client or business partner; 
+	2) storing these lists (orders) in XML files which can be opened later on the same device or another; 
+	3) configuring each item (window or door) in terms of required materials and positioning; 
+	4) calculating the materials required for the creation of each item and for the expedition of the whole order; 
+	5) calculating the price of each item and the price of the whole order; 
+	6) allowing user to create PDF files for representation of orders. The language of the GUI is bulgarian. 
+
+This application is created as a study project and is not intended for actual use by real manufacturers, nor is any kind of trade product!
+  
+@author A

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="10.0.2" class="java.beans.XMLDecoder">
+ <object class="application.Order" id="Order0">
+  <void property="orderList">
+   <void method="add">
+    <object class="application.PVCDoor">
+     <void property="LCmFrame">
+      <double>140.0</double>
+     </void>
+     <void property="height">
+      <double>23.0</double>
+     </void>
+     <void property="sqCmGlass">
+      <double>276.0</double>
+     </void>
+     <void property="width">
+      <double>12.0</double>
+     </void>
+    </object>
+   </void>
+  </void>
+  <void property="totalLMFrame">
+   <double>1.4</double>
+  </void>
+  <void property="totalSqMGlass">
+   <double>0.0276</double>
+  </void>
+ </object>
+</java>

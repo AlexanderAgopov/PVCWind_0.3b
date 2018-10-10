@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane minHeight="600.0" minWidth="960.0" prefHeight="600.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pvcFXML.MainFXMLController">
+   <children>
+      <TextField fx:id="glassPriceField" layoutX="20.0" layoutY="50.0" onAction="#inputGlassPrice" prefHeight="26.0" prefWidth="212.0" promptText="Цена на м²  (стъклопакет)" />
+      <TextField fx:id="framePriceField" layoutX="450.0" layoutY="46.0" onAction="#inputFramePrice" prefHeight="26.0" prefWidth="212.0" promptText="Цена на л.м (профил)" />
+      <Label layoutX="235.0" layoutY="49.0" text="лв./м²" AnchorPane.leftAnchor="246.0" />
+      <Label layoutX="665.0" layoutY="49.0" text="лв./л.м" AnchorPane.leftAnchor="668.0" />
+      <Button fx:id="glassPriceButton" layoutX="310.0" layoutY="46.0" mnemonicParsing="false" onAction="#inputGlassPrice" text="Въведи" />
+      <Button fx:id="framePriceButton" layoutX="727.0" layoutY="46.0" mnemonicParsing="false" onAction="#inputFramePrice" text="Въведи" />
+      <MenuBar layoutX="7.0" layoutY="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="true" text="_Заявка">
+            <items>
+                  <MenuItem fx:id="newOrderMenuItem" mnemonicParsing="false" onAction="#createNewOrder" text="Нова заявка" />
+                  <MenuItem fx:id="openMenuItem" mnemonicParsing="false" onAction="#openFile" text="Отвори" />
+                  <MenuItem fx:id="saveAsMenuItem" mnemonicParsing="false" onAction="#saveOrderAs" text="Запиши като" />
+                  <MenuItem fx:id="createPDFMenuItem" mnemonicParsing="false" onAction="#createPDFDoc" text="Създай ПДФ файл" />
+              <MenuItem fx:id="closeMenuItem" mnemonicParsing="false" onAction="#exitProgram" text="Затвори" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="true" text="_Добави">
+            <items>
+              <MenuItem fx:id="doorMenuItem" mnemonicParsing="false" onAction="#openConfigurationPaneForDoor" text="Врата" />
+                  <Menu mnemonicParsing="false" text="Прозорец - 1 крило">
+                    <items>
+                      <MenuItem fx:id="window1_UnopenableMenuItem" mnemonicParsing="false" onAction="#openConfigurationPaneForUnopenableWindow1" text="Неотваряем" />
+                        <MenuItem fx:id="window1_OpenableMenuItem" mnemonicParsing="false" onAction="#openConfigurationPaneForWindow1With1OpenableWing" text="Отваряем" />
+                    </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Прозорец - 2 крила">
+                    <items>
+                        <Menu mnemonicParsing="false" text="Неотваряем">
+                          <items>
+                            <MenuItem fx:id="window2_UnopenableHorizontalMenuiItem" mnemonicParsing="false" onAction="#openConfigurationPaneForUnopenableWindow2Horizontal" text="Хоризонтално разположение на крилата" />
+                            <MenuItem fx:id="window2_UnopenableVerticalMenuiItem" mnemonicParsing="false" onAction="#openConfigurationPaneForUnopenableWindow2Vertical" text="Вертикално разположение на крилата" />
+                          </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Едно отваряемо крило">
+                          <items>
+                            <MenuItem fx:id="window2_1Of2OpenableHorizontalMenuItem" mnemonicParsing="false" onAction="#openConfigurationPaneForWindow2With1OpenableWingHorizontal" text="Хоризонтално разположение на крилата" />
+                              <MenuItem fx:id="window2_1Of2OpenableVerticalMenuItem" mnemonicParsing="false" onAction="#openConfigurationPaneForWindow2With1OpenableWingVertical" text="Вертикално разположение на крилата" />
+                          </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Две отваряеми крила">
+                          <items>
+                            <MenuItem fx:id="window2_2Of2OpenableHorizontalMenuItem" mnemonicParsing="false" onAction="#openConfigurationPaneForWindow2With2OpenableWingsHorizontal" text="Хоризонтално разположение на крилата" />
+                              <MenuItem fx:id="window2_2Of2OpenableVerticalMenuItem" mnemonicParsing="false" onAction="#openConfigurationPaneForWindow2With2OpenableWingsVertical" text="Вертикално разположение на крилата" />
+                          </items>
+                        </Menu>
+                    </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Прозорец - 3 крила">
+                    <items>
+                        <Menu mnemonicParsing="false" text="Неотваряем">
+                          <items>
+                            <MenuItem fx:id="window3_UnopenableHorizontalMenuItem" mnemonicParsing="false" onAction="#openConfigurationPaneForUnopenableWindow3Horizontal" text="Хоризонтално разположение на крилата" />
+                            <MenuItem fx:id="window3_UnopenableVerticalMenuItem" mnemonicParsing="false" onAction="#openConfigurationPaneForUnopenableWindow3Vertical" text="Вертикално разположение на крилата" />
+                          </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Едно отваряемо крило">
+                          <items>
+                            <MenuItem fx:id="window3_1Of3OpenableHorizontalMenuItem" mnemonicParsing="false" onAction="#openConfigurationPaneForWindow3With1OpenableWingHorizontal" text="Хоризонтално разположение на крилата" />
+                              <MenuItem fx:id="window3_1Of3OpenableVerticalMenuItem" mnemonicParsing="false" onAction="#openConfigurationPaneForWindow3With1OpenableWingVertical" text="Вертикално разположение на крилата" />
+                          </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Две отваряеми крила">
+                          <items>
+                            <MenuItem fx:id="window3_2Of3OpenableHorizontalMenuItem" mnemonicParsing="false" onAction="#openConfigurationPaneForWindow3With2OpenableWingsHorizontal" text="Хоризонтално разположение на крилата" />
+                              <MenuItem fx:id="window3_2Of3OpenableVerticalMenuItem" mnemonicParsing="false" onAction="#openConfigurationPaneForWindow3With2OpenableWingsVertical" text="Вертикално разположение на крилата" />
+                          </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Три отваряеми крила">
+                          <items>
+                            <MenuItem fx:id="window3_3Of3OpenableHorizontalMenuItem" mnemonicParsing="false" onAction="#openConfigurationPaneForWindow3With3OpenableWingsHorizontal" text="Хоризонтално разположение на крилата" />
+                              <MenuItem fx:id="window3_3Of3OpenableVerticalMenuItem" mnemonicParsing="false" onAction="#openConfigurationPaneForWindow3With3OpenableWingsVertical" text="Вертикално разположение на крилата" />
+                          </items>
+                        </Menu>
+                    </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Прозорец - 4 крила">
+                    <items>
+                        <Menu fx:id="window4_UnopenableHorizontalMenuItem" mnemonicParsing="false" text="Неотваряем">
+                          <items>
+                            <MenuItem fx:id="window4_UnopenableHorizontalMenuItem" mnemonicParsing="false" onAction="#openConfigurationPaneForUnopenableWindow4Horizontal" text="Хоризонтално разположение на крилата" />
+                              <MenuItem fx:id="window4_UnopenableVerticalMenuItem" mnemonicParsing="false" onAction="#openConfigurationPaneForUnopenableWindow4Vertical" text="Вертикално разположение на крилата" />
+                          </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Едно отваряемо крило">
+                          <items>
+                            <MenuItem fx:id="window4_1Of4OpenableHorizontalMenuItem" mnemonicParsing="false" onAction="#openConfigurationPaneForWindow4With1OpenableWingHorizontal" text="Хоризонтално разположение на крилата" />
+                              <MenuItem fx:id="window4_1Of4OpenableVerticalMenuItem" mnemonicParsing="false" onAction="#openConfigurationPaneForWindow4With1OpenableWingVertical" text="Вертикално разположение на крилата" />
+                          </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Две отваряеми крила">
+                          <items>
+                            <MenuItem fx:id="window4_2Of4OpenableHorizontalMenuItem" mnemonicParsing="false" onAction="#openConfigurationPaneForWindow4With2OpenableWingsHorizontal" text="Хоризонтално разположение на крилата" />
+                              <MenuItem fx:id="window4_2Of4OpenableVerticalMenuItem" mnemonicParsing="false" onAction="#openConfigurationPaneForWindow4With2OpenableWingsVertical" text="Вертикално разположение на крилата" />
+                          </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Три отваряеми крила">
+                          <items>
+                            <MenuItem fx:id="window4_3Of4OpenableHorizontalMenuItem" mnemonicParsing="false" onAction="#openConfigurationPaneForWindow4With3OpenableWingsHorizontal" text="Хоризонтално разположение на крилата" />
+                              <MenuItem fx:id="window4_3Of4OpenableVerticalMenuItem" mnemonicParsing="false" onAction="#openConfigurationPaneForWindow4With3OpenableWingsVertical" text="Вертикално разположение на крилата" />
+                          </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Четири отваряеми крила">
+                          <items>
+                            <MenuItem fx:id="window4_4Of4OpenableHorizontalMenuItem" mnemonicParsing="false" onAction="#openConfigurationPaneForWindow4With4OpenableWingsHorizontal" text="Хоризонтално разположение на крилата" />
+                            <MenuItem fx:id="window4_4Of4OpenableVerticalMenuItem" mnemonicParsing="false" onAction="#openConfigurationPaneForWindow4With4OpenableWingsVertical" text="Вертикално разположение на крилата" />
+                          </items>
+                        </Menu>
+                    </items>
+                  </Menu>
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="true" text="_Премахни">
+              <items>
+                <MenuItem fx:id="deleteMenuiItem" mnemonicParsing="false" onAction="#deleteSelected" text="Премахни маркираното" />
+                  <MenuItem fx:id="deleteAllMenuItem" mnemonicParsing="false" onAction="#deleteAll" text="Премахни всичко" />
+              </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+      <Text layoutX="127.0" layoutY="547.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Цена на м² за текущата заявка:" AnchorPane.bottomAnchor="57.0" AnchorPane.leftAnchor="127.0" />
+      <Text layoutX="127.0" layoutY="577.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Цена на л. м за текущата заявка:" wrappingWidth="233.19384098052979" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="127.0" />
+      <Text fx:id="mainLevsPerSqMText" layoutX="370.0" layoutY="547.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 лв./м²" AnchorPane.bottomAnchor="57.0" AnchorPane.leftAnchor="370.0" />
+      <Text fx:id="mainLevsPerLMText" layoutX="370.0" layoutY="577.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 лв./л.м" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="370.0" />
+      <Text layoutX="480.0" layoutY="547.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Количество:" AnchorPane.bottomAnchor="57.0" AnchorPane.leftAnchor="480.0" />
+      <Text layoutX="481.0" layoutY="577.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Количество:" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="480.0" />
+      <Text fx:id="totalSqMGlassText" layoutX="573.0" layoutY="547.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 м²" AnchorPane.bottomAnchor="57.0" AnchorPane.leftAnchor="573.0" />
+      <Text fx:id="totalLMFrameText" layoutX="573.0" layoutY="577.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 л.м" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="573.0" />
+      <Text layoutX="20.0" layoutY="547.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Стъклопакет" underline="true" AnchorPane.bottomAnchor="57.0" AnchorPane.leftAnchor="20.0" />
+      <Text layoutX="20.0" layoutY="577.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Профил" underline="true" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="20.0" />
+      <Text layoutX="655.0" layoutY="547.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Общо:" AnchorPane.bottomAnchor="57.0" AnchorPane.leftAnchor="655.0" />
+      <Text layoutX="655.0" layoutY="577.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Общо:" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="655.0" />
+      <Text fx:id="totalGlassPriceText" layoutX="705.0" layoutY="547.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 лв." AnchorPane.bottomAnchor="57.0" AnchorPane.leftAnchor="705.0" />
+      <Text fx:id="totalFramePriceText" layoutX="705.0" layoutY="577.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 лв." AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="705.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2198ff38" height="36.0" layoutX="791.0" layoutY="547.0" stroke="#219bff" strokeType="INSIDE" width="149.0" AnchorPane.bottomAnchor="17.0" AnchorPane.rightAnchor="20.0" />
+      <Text layoutX="795.0" layoutY="566.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" Крайна цена:" textAlignment="CENTER" wrappingWidth="136.18701171875" AnchorPane.bottomAnchor="37.0" AnchorPane.rightAnchor="29.0">
+         <font>
+            <Font size="12.0" />
+         </font></Text>
+      <Text fx:id="finalPriceText" layoutX="790.0" layoutY="586.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0 лв." textAlignment="CENTER" wrappingWidth="149.00001525878906" AnchorPane.bottomAnchor="18.0" AnchorPane.rightAnchor="20.0">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Text>
+      <Button fx:id="orderCalculationButton" layoutX="791.0" layoutY="523.0" mnemonicParsing="true" onAction="#calculateOrder" prefHeight="26.0" prefWidth="149.0" text="_Калкулирай" textAlignment="CENTER" textFill="#219bff" AnchorPane.bottomAnchor="58.0" AnchorPane.rightAnchor="20.0" />
+      <ListView fx:id="orderListView" layoutX="21.0" layoutY="94.0" prefHeight="201.0" prefWidth="918.0" AnchorPane.bottomAnchor="305.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="95.0" />
+      <AnchorPane fx:id="pvcWindowPropertiesPane" layoutX="21.0" layoutY="295.0" prefHeight="200.0" prefWidth="918.0" AnchorPane.bottomAnchor="95.0" AnchorPane.leftAnchor="20.0">
+         <children>
+            <Text fx:id="infoText" fill="#219bff" strokeType="OUTSIDE" strokeWidth="0.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="280.0" />
+            <AnchorPane fx:id="pvcWindowDimensionsPane" prefHeight="210.0" prefWidth="280.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="640.0">
+               <children>
+                  <TextField fx:id="fullWidthTF" layoutX="59.0" layoutY="60.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="54.0" />
+                  <Label layoutX="43.0" layoutY="38.0" prefHeight="16.0" prefWidth="181.0" text="        Обща ширина" textAlignment="CENTER" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="55.0" />
+                  <TextField fx:id="fullHeightTF" layoutX="53.0" layoutY="120.0" />
+                  <Label layoutX="37.0" layoutY="98.0" prefHeight="16.0" prefWidth="187.0" text="      Обща височина" textAlignment="CENTER" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="55.0" />
+                  <Button fx:id="confirmButton" defaultButton="true" layoutX="55.0" layoutY="170.0" mnemonicParsing="false" onAction="#acceptPVCWindowConfiguration" text="Приеми" textFill="#3078d7" AnchorPane.leftAnchor="55.0" />
+                  <Button fx:id="cancelButton" cancelButton="true" layoutX="144.0" layoutY="170.0" mnemonicParsing="false" onAction="#AbortPVCWindowConfiguration" text="Откажи" textFill="#9a2727" />
+                  <Label layoutX="38.0" layoutY="12.0" prefHeight="16.0" prefWidth="204.0" text="           Размери " textAlignment="CENTER" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="55.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="wing1Pane" layoutX="280.0" prefHeight="210.0" prefWidth="160.0" visible="false">
+               <children>
+                  <Text layoutX="10.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Отваряемо крило 1" textAlignment="CENTER" wrappingWidth="139.7294921875">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="13.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ширина (1)" textAlignment="CENTER" wrappingWidth="139.7294921875">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="wing1WidthTF" layoutY="60.0" prefHeight="26.0" prefWidth="140.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                  <Text layoutX="13.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Височина (1)" textAlignment="CENTER" wrappingWidth="139.7294921875">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="wing1HeightTF" layoutY="120.0" prefHeight="26.0" prefWidth="160.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="wing2Pane" layoutX="440.0" prefHeight="210.0" prefWidth="160.0" visible="false">
+               <children>
+                  <Text layoutX="10.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Отваряемо крило 2" textAlignment="CENTER" wrappingWidth="139.7294921875">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="13.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ширина (2)" textAlignment="CENTER" wrappingWidth="139.7294921875">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="wing2WidthTF" layoutY="60.0" prefHeight="26.0" prefWidth="140.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                  <Text layoutX="13.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Височина (2)" textAlignment="CENTER" wrappingWidth="139.7294921875">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="wing2HeightTF" layoutY="120.0" prefHeight="26.0" prefWidth="160.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="wing3Pane" layoutX="600.0" prefHeight="210.0" prefWidth="160.0" visible="false">
+               <children>
+                  <Text layoutX="10.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Отваряемо крило 3" textAlignment="CENTER" wrappingWidth="139.7294921875">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="13.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ширина (3)" textAlignment="CENTER" wrappingWidth="139.7294921875">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="wing3WidthTF" layoutY="60.0" prefHeight="26.0" prefWidth="140.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                  <Text layoutX="13.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Височина (3)" textAlignment="CENTER" wrappingWidth="139.7294921875">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="wing3HeightTF" layoutY="120.0" prefHeight="26.0" prefWidth="160.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="wing4Pane" layoutX="760.0" prefHeight="210.0" prefWidth="160.0" visible="false">
+               <children>
+                  <Text layoutX="10.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Отваряемо крило 4" textAlignment="CENTER" wrappingWidth="139.7294921875">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="13.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ширина (4)" textAlignment="CENTER" wrappingWidth="139.7294921875">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="wing4WidthTF" layoutY="60.0" prefHeight="26.0" prefWidth="140.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                  <Text layoutX="13.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Височина (4)" textAlignment="CENTER" wrappingWidth="139.7294921875">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="wing4HeightTF" layoutY="120.0" prefHeight="26.0" prefWidth="160.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

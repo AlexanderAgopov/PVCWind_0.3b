@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="10.0.2" class="java.beans.XMLDecoder">
+ <object class="application.Order" id="Order0">
+  <void property="orderList">
+   <void method="add">
+    <object class="application.PVCWindow2Unopenable">
+     <void property="LCmFrame">
+      <double>440.0</double>
+     </void>
+     <void property="height">
+      <double>88.0</double>
+     </void>
+     <void property="horizontal">
+      <boolean>true</boolean>
+     </void>
+     <void property="sqCmGlass">
+      <double>7744.0</double>
+     </void>
+     <void property="width">
+      <double>88.0</double>
+     </void>
+     <void property="windowPrice">
+      <double>41.3952</double>
+     </void>
+    </object>
+   </void>
+  </void>
+  <void property="pricePerLMFrame">
+   <double>8.0</double>
+  </void>
+  <void property="pricePerSqMGlass">
+   <double>8.0</double>
+  </void>
+  <void property="totalLMFrame">
+   <double>4.4</double>
+  </void>
+  <void property="totalPriceFrame">
+   <double>35.2</double>
+  </void>
+  <void property="totalPriceGlass">
+   <double>6.1952</double>
+  </void>
+  <void property="totalPriceOrder">
+   <double>41.3952</double>
+  </void>
+  <void property="totalSqMGlass">
+   <double>0.7744</double>
+  </void>
+ </object>
+</java>

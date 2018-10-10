@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="150.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pvcFXML.SaveAsFXMLController">
+   <children>
+      <TextField fx:id="fileNameTextField" layoutX="30.0" layoutY="42.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0" />
+      <Button fx:id="saveButton" defaultButton="true" layoutX="30.0" layoutY="75.0" mnemonicParsing="false" onAction="#save" text="Запази" textFill="#219bff" />
+      <Button fx:id="cancelButton" cancelButton="true" layoutX="198.0" layoutY="73.0" mnemonicParsing="false" onAction="#cancel" text="Откажи" textFill="#a82b2b" />
+   </children>
+</AnchorPane>
