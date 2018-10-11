@@ -41,6 +41,10 @@ public class Order {
 		return orderList;
 	}
 
+	public void setOrderList(ArrayList<PVCWindow> orderList) {
+		this.orderList = orderList;
+	}
+
 	public double getPricePerSqMGlass() {
 		return pricePerSqMGlass;
 	}
