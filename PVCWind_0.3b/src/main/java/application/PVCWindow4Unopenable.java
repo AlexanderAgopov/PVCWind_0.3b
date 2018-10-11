@@ -9,21 +9,8 @@ package application;
  */
 public class PVCWindow4Unopenable extends PVCWindow {
 
-	// Generate constructors
 	public PVCWindow4Unopenable() {
 		super();
-	}
-
-	public PVCWindow4Unopenable(boolean horizontal) {
-		super();
-	}
-
-	public boolean isHorizontal() {
-		return horizontal;
-	}
-
-	public void setHorizontal(boolean horizontal) {
-		this.horizontal = horizontal;
 	}
 
 	@Override

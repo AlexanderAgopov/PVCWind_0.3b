@@ -1,29 +1,10 @@
-/**
- * 
- */
+
 package application;
 
-/**
- * @author a
- *
- */
 public class PVCWindow3Unopenable extends PVCWindow {
 
-	// Generate constructors
 	public PVCWindow3Unopenable() {
 		super();
-	}
-
-	public PVCWindow3Unopenable(boolean horizontal) {
-		super();
-	}
-
-	public boolean isHorizontal() {
-		return horizontal;
-	}
-
-	public void setHorizontal(boolean horizontal) {
-		this.horizontal = horizontal;
 	}
 
 	@Override

@@ -9,21 +9,8 @@ package application;
  */
 public class PVCWindow3With2OpenableWings extends PVCWindow {
 
-	// Generate constructors
 	public PVCWindow3With2OpenableWings() {
 		super();
-	}
-
-	public PVCWindow3With2OpenableWings(boolean horizontal) {
-		super();
-	}
-
-	public boolean isHorizontal() {
-		return horizontal;
-	}
-
-	public void setHorizontal(boolean horizontal) {
-		this.horizontal = horizontal;
 	}
 
 	@Override
