@@ -238,7 +238,7 @@ public class MainFXMLController {
 	private TextField wing4HeightTF;
 
 	// Create a variable the value of which determines what kind of window
-	// configuration area would be invoked in the GUI by user.
+	// configuration would be invoked in the GUI by user.
 	static int windowVariantChoice = 0;
 
 	public Text getInfoText() {
@@ -499,7 +499,7 @@ public class MainFXMLController {
 		application.Main.order.addItem(createNewWindow());
 		application.Main.order.getLastItem().setHorizontal(isHorizontal());
 		try {
-			calculateWindowGlassAndFrame(application.Main.order.getLastItem());
+			setWindowGlassAndFrameValues(application.Main.order.getLastItem());
 			calculateThisWindowPrice(application.Main.order.getLastItem());
 			int t = application.Main.order.getOrderList().size();
 			String temp = t + ". " + application.Main.order.getLastItem().toString();
@@ -745,12 +745,12 @@ public class MainFXMLController {
 	}
 
 	/**
-	 * Calculates the square meters of glass and linear meters of frame needed for
-	 * the production of given window or door.
+	 * Sets the square meters of glass and linear meters of frame needed for the
+	 * production of given window or door.
 	 * 
 	 * @param win - an instance of class PVCWindow or its child classes
 	 */
-	void calculateWindowGlassAndFrame(PVCWindow win) throws NumberFormatException {
+	void setWindowGlassAndFrameValues(PVCWindow win) throws NumberFormatException {
 		// Read from text fields and set the instance variables
 		win.setWidth(Double.parseDouble(fullWidthTF.getText()));
 		win.setHeight(Double.parseDouble(fullHeightTF.getText()));
@@ -946,7 +946,7 @@ public class MainFXMLController {
 				.setText(String.format("%.2f лв./м%c", application.Main.order.getPricePerSqMGlass(), '\u00B2'));
 		mainLevsPerLMText.setText(application.Main.order.getPricePerLMFrame() + " лв./л.м");
 	}
-	
+
 	void refreshGUI() {
 		allowInputIntoAllTextFieldsInWindowConfigurationArea();
 		resetWindowConfiguration();
