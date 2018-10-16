@@ -278,13 +278,14 @@ public class MainFXMLController {
 	void openFile(ActionEvent event) {
 		// Open the dialog window containing information about saved orders
 		try {
-			FXMLLoader fxmlLoader3 = new FXMLLoader(getClass().getResource("/pvcFXML/OpenFileFXML.fxml"));
-			Parent root3 = (Parent) fxmlLoader3.load();
-			OpenFileFXMLController openFileController = fxmlLoader3.<OpenFileFXMLController>getController();
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/pvcFXML/OpenFileFXML.fxml"));
+			Parent root = (Parent) fxmlLoader.load();
+			OpenFileFXMLController openFileController = fxmlLoader.<OpenFileFXMLController>getController();
 			openFileController.readFileDirectory();
-			Stage stage3 = new Stage();
-			stage3.setScene(new Scene(root3));
-			stage3.show();
+			Stage stage = new Stage();
+			stage.setResizable(false);
+			stage.setScene(new Scene(root));
+			stage.show();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -310,9 +311,8 @@ public class MainFXMLController {
 	void inputFramePrice(ActionEvent event) {
 		infoText.setText("");
 		try {
-			double priceFrame = Double.parseDouble(framePriceField.getText());
-			application.Main.order.setPricePerLMFrame(priceFrame);
-			mainLevsPerLMText.setText(priceFrame + " лв./л.м");
+			application.Main.order.setPricePerLMFrame(Double.parseDouble(framePriceField.getText()));
+			mainLevsPerLMText.setText(framePriceField.getText() + " лв./л.м");
 		} catch (NumberFormatException nfe) {
 			infoText.setText("Грешка! Опитвате се да въведете невалидни данни. Моля опитайте отново.");
 		}
@@ -332,9 +332,8 @@ public class MainFXMLController {
 	void inputGlassPrice(ActionEvent event) {
 		infoText.setText("");
 		try {
-			double priceGlass = Double.parseDouble(glassPriceField.getText());
-			application.Main.order.setPricePerSqMGlass(priceGlass);
-			mainLevsPerSqMText.setText(String.format("%.2f лв./м%c", priceGlass, '\u00B2'));
+			application.Main.order.setPricePerSqMGlass(Double.parseDouble(glassPriceField.getText()));
+			mainLevsPerSqMText.setText(String.format("%s лв./м%c", glassPriceField.getText(), '\u00B2'));
 		} catch (NumberFormatException nfe) {
 			infoText.setText("Грешка! Опитвате се да въведете невалидни данни. Моля опитайте отново.");
 		}
@@ -359,18 +358,12 @@ public class MainFXMLController {
 
 	@FXML
 	void openConfigurationPaneForDoor(ActionEvent event) {
-		resetWindowConfiguration();
-		openConfigurationUnopenableWindow();
-		windowVariantChoice = 0;
-		infoText.setText(printInformationAccordingToSelectedWindowCode());
+		showUnopenableWindowConfiguration(0);
 	}
 
 	@FXML
 	void openConfigurationPaneForUnopenableWindow1(ActionEvent event) {
-		resetWindowConfiguration();
-		openConfigurationUnopenableWindow();
-		windowVariantChoice = 100;
-		infoText.setText(printInformationAccordingToSelectedWindowCode());
+		showUnopenableWindowConfiguration(100);
 	}
 
 	@FXML
@@ -383,212 +376,122 @@ public class MainFXMLController {
 
 	@FXML
 	void openConfigurationPaneForUnopenableWindow2Horizontal(ActionEvent event) {
-		resetWindowConfiguration();
-		openConfigurationUnopenableWindow();
-		windowVariantChoice = 201;
-		infoText.setText(printInformationAccordingToSelectedWindowCode());
+		showUnopenableWindowConfiguration(201);
 	}
 
 	@FXML
 	void openConfigurationPaneForUnopenableWindow2Vertical(ActionEvent event) {
-		resetWindowConfiguration();
-		openConfigurationUnopenableWindow();
-		windowVariantChoice = 200;
-		infoText.setText(printInformationAccordingToSelectedWindowCode());
+		showUnopenableWindowConfiguration(200);
 	}
 
 	@FXML
 	void openConfigurationPaneForUnopenableWindow3Horizontal(ActionEvent event) {
-		resetWindowConfiguration();
-		openConfigurationUnopenableWindow();
-		windowVariantChoice = 301;
-		infoText.setText(printInformationAccordingToSelectedWindowCode());
+		showUnopenableWindowConfiguration(301);
 	}
 
 	@FXML
 	void openConfigurationPaneForUnopenableWindow3Vertical(ActionEvent event) {
-		resetWindowConfiguration();
-		openConfigurationUnopenableWindow();
-		windowVariantChoice = 300;
-		infoText.setText(printInformationAccordingToSelectedWindowCode());
+		showUnopenableWindowConfiguration(300);
 	}
 
 	@FXML
 	void openConfigurationPaneForUnopenableWindow4Horizontal(ActionEvent event) {
-		resetWindowConfiguration();
-		openConfigurationUnopenableWindow();
-		windowVariantChoice = 401;
-		infoText.setText(printInformationAccordingToSelectedWindowCode());
+		showUnopenableWindowConfiguration(401);
 	}
 
 	@FXML
 	void openConfigurationPaneForUnopenableWindow4Vertical(ActionEvent event) {
-		resetWindowConfiguration();
-		openConfigurationUnopenableWindow();
-		windowVariantChoice = 400;
-		infoText.setText(printInformationAccordingToSelectedWindowCode());
+		showUnopenableWindowConfiguration(400);
 	}
 
 	@FXML
 	void openConfigurationPaneForWindow2With1OpenableWingHorizontal(ActionEvent event) {
-		resetWindowConfiguration();
-		openConfigurationPane_1_OpenableWing();
-		windowVariantChoice = 211;
-		banInputIntoUnusedTextFieldsInWindowConfigurationArea(windowVariantChoice);
-		infoText.setText(printInformationAccordingToSelectedWindowCode());
+		showOneOpenableWingConfiguration(211);
 	}
 
 	@FXML
 	void openConfigurationPaneForWindow2With1OpenableWingVertical(ActionEvent event) {
-		resetWindowConfiguration();
-		openConfigurationPane_1_OpenableWing();
-		windowVariantChoice = 210;
-		banInputIntoUnusedTextFieldsInWindowConfigurationArea(windowVariantChoice);
-		infoText.setText(printInformationAccordingToSelectedWindowCode());
+		showOneOpenableWingConfiguration(210);
 	}
 
 	@FXML
 	void openConfigurationPaneForWindow2With2OpenableWingsHorizontal(ActionEvent event) {
-		resetWindowConfiguration();
-		openConfigurationPane_2_OpenableWings();
-		windowVariantChoice = 221;
-		banInputIntoUnusedTextFieldsInWindowConfigurationArea(windowVariantChoice);
-		infoText.setText(printInformationAccordingToSelectedWindowCode());
+		showTwoOpenableWingsConfiguration(221);
 	}
 
 	@FXML
 	void openConfigurationPaneForWindow2With2OpenableWingsVertical(ActionEvent event) {
-		resetWindowConfiguration();
-		openConfigurationPane_2_OpenableWings();
-		windowVariantChoice = 220;
-		banInputIntoUnusedTextFieldsInWindowConfigurationArea(windowVariantChoice);
-		infoText.setText(printInformationAccordingToSelectedWindowCode());
+		showTwoOpenableWingsConfiguration(220);
 	}
 
 	@FXML
 	void openConfigurationPaneForWindow3With1OpenableWingHorizontal(ActionEvent event) {
-		resetWindowConfiguration();
-		openConfigurationPane_1_OpenableWing();
-		windowVariantChoice = 311;
-		banInputIntoUnusedTextFieldsInWindowConfigurationArea(windowVariantChoice);
-		infoText.setText(printInformationAccordingToSelectedWindowCode());
+		showOneOpenableWingConfiguration(311);
 	}
 
 	@FXML
 	void openConfigurationPaneForWindow3With1OpenableWingVertical(ActionEvent event) {
-		resetWindowConfiguration();
-		openConfigurationPane_1_OpenableWing();
-		windowVariantChoice = 310;
-		banInputIntoUnusedTextFieldsInWindowConfigurationArea(windowVariantChoice);
-		infoText.setText(printInformationAccordingToSelectedWindowCode());
+		showOneOpenableWingConfiguration(310);
 	}
 
 	@FXML
 	void openConfigurationPaneForWindow3With2OpenableWingsHorizontal(ActionEvent event) {
-		resetWindowConfiguration();
-		openConfigurationPane_2_OpenableWings();
-		windowVariantChoice = 321;
-		banInputIntoUnusedTextFieldsInWindowConfigurationArea(windowVariantChoice);
-		infoText.setText(printInformationAccordingToSelectedWindowCode());
+		showTwoOpenableWingsConfiguration(321);
 	}
 
 	@FXML
 	void openConfigurationPaneForWindow3With2OpenableWingsVertical(ActionEvent event) {
-		resetWindowConfiguration();
-		openConfigurationPane_2_OpenableWings();
-		windowVariantChoice = 320;
-		banInputIntoUnusedTextFieldsInWindowConfigurationArea(windowVariantChoice);
-		infoText.setText(printInformationAccordingToSelectedWindowCode());
+		showTwoOpenableWingsConfiguration(320);
 	}
 
 	@FXML
 	void openConfigurationPaneForWindow3With3OpenableWingsHorizontal(ActionEvent event) {
-		resetWindowConfiguration();
-		openConfigurationPane_3_OpenableWings();
-		windowVariantChoice = 331;
-		banInputIntoUnusedTextFieldsInWindowConfigurationArea(windowVariantChoice);
-		infoText.setText(printInformationAccordingToSelectedWindowCode());
+		showThreeOpenableWingsConfiguration(331);
 	}
 
 	@FXML
 	void openConfigurationPaneForWindow3With3OpenableWingsVertical(ActionEvent event) {
-		resetWindowConfiguration();
-		openConfigurationPane_3_OpenableWings();
-		windowVariantChoice = 330;
-		banInputIntoUnusedTextFieldsInWindowConfigurationArea(windowVariantChoice);
-		infoText.setText(printInformationAccordingToSelectedWindowCode());
+		showThreeOpenableWingsConfiguration(330);
 	}
 
 	@FXML
 	void openConfigurationPaneForWindow4With1OpenableWingHorizontal(ActionEvent event) {
-		resetWindowConfiguration();
-		openConfigurationPane_1_OpenableWing();
-		windowVariantChoice = 411;
-		banInputIntoUnusedTextFieldsInWindowConfigurationArea(windowVariantChoice);
-		infoText.setText(printInformationAccordingToSelectedWindowCode());
+		showOneOpenableWingConfiguration(411);
 	}
 
 	@FXML
 	void openConfigurationPaneForWindow4With1OpenableWingVertical(ActionEvent event) {
-		resetWindowConfiguration();
-		openConfigurationPane_1_OpenableWing();
-		windowVariantChoice = 410;
-		banInputIntoUnusedTextFieldsInWindowConfigurationArea(windowVariantChoice);
-		infoText.setText(printInformationAccordingToSelectedWindowCode());
+		showOneOpenableWingConfiguration(410);
 	}
 
 	@FXML
 	void openConfigurationPaneForWindow4With2OpenableWingsHorizontal(ActionEvent event) {
-		resetWindowConfiguration();
-		openConfigurationPane_2_OpenableWings();
-		windowVariantChoice = 421;
-		banInputIntoUnusedTextFieldsInWindowConfigurationArea(windowVariantChoice);
-		infoText.setText(printInformationAccordingToSelectedWindowCode());
+		showTwoOpenableWingsConfiguration(421);
 	}
 
 	@FXML
 	void openConfigurationPaneForWindow4With2OpenableWingsVertical(ActionEvent event) {
-		resetWindowConfiguration();
-		openConfigurationPane_2_OpenableWings();
-		windowVariantChoice = 420;
-		banInputIntoUnusedTextFieldsInWindowConfigurationArea(windowVariantChoice);
-		infoText.setText(printInformationAccordingToSelectedWindowCode());
+		showTwoOpenableWingsConfiguration(420);
 	}
 
 	@FXML
 	void openConfigurationPaneForWindow4With3OpenableWingsHorizontal(ActionEvent event) {
-		resetWindowConfiguration();
-		openConfigurationPane_3_OpenableWings();
-		windowVariantChoice = 431;
-		banInputIntoUnusedTextFieldsInWindowConfigurationArea(windowVariantChoice);
-		infoText.setText(printInformationAccordingToSelectedWindowCode());
+		showThreeOpenableWingsConfiguration(431);
 	}
 
 	@FXML
 	void openConfigurationPaneForWindow4With3OpenableWingsVertical(ActionEvent event) {
-		resetWindowConfiguration();
-		openConfigurationPane_3_OpenableWings();
-		windowVariantChoice = 430;
-		banInputIntoUnusedTextFieldsInWindowConfigurationArea(windowVariantChoice);
-		infoText.setText(printInformationAccordingToSelectedWindowCode());
+		showThreeOpenableWingsConfiguration(430);
 	}
 
 	@FXML
 	void openConfigurationPaneForWindow4With4OpenableWingsHorizontal(ActionEvent event) {
-		resetWindowConfiguration();
-		openConfigurationPane_4_OpenableWings();
-		windowVariantChoice = 441;
-		banInputIntoUnusedTextFieldsInWindowConfigurationArea(windowVariantChoice);
-		infoText.setText(printInformationAccordingToSelectedWindowCode());
+		showFourOpenableWingsConfiguration(441);
 	}
 
 	@FXML
 	void openConfigurationPaneForWindow4With4OpenableWingsVertical(ActionEvent event) {
-		resetWindowConfiguration();
-		openConfigurationPane_4_OpenableWings();
-		windowVariantChoice = 440;
-		banInputIntoUnusedTextFieldsInWindowConfigurationArea(windowVariantChoice);
-		infoText.setText(printInformationAccordingToSelectedWindowCode());
+		showFourOpenableWingsConfiguration(440);
 	}
 
 	@FXML
@@ -616,7 +519,6 @@ public class MainFXMLController {
 			infoText.setText("Грешка! Опитвате се да въведете невалидни данни. Моля опитайте отново.");
 		}
 
-		
 	}
 
 	@FXML
@@ -809,6 +711,45 @@ public class MainFXMLController {
 		default:
 			return "";
 		}
+	}
+
+	void showUnopenableWindowConfiguration(int windowChoice) {
+		resetWindowConfiguration();
+		openConfigurationUnopenableWindow();
+		windowVariantChoice = windowChoice;
+		infoText.setText(printInformationAccordingToSelectedWindowCode());
+	}
+
+	void showOneOpenableWingConfiguration(int windowChoice) {
+		resetWindowConfiguration();
+		openConfigurationPane_1_OpenableWing();
+		windowVariantChoice = windowChoice;
+		banInputIntoUnusedTextFieldsInWindowConfigurationArea(windowVariantChoice);
+		infoText.setText(printInformationAccordingToSelectedWindowCode());
+	}
+
+	void showTwoOpenableWingsConfiguration(int windowChoice) {
+		resetWindowConfiguration();
+		openConfigurationPane_2_OpenableWings();
+		windowVariantChoice = windowChoice;
+		banInputIntoUnusedTextFieldsInWindowConfigurationArea(windowVariantChoice);
+		infoText.setText(printInformationAccordingToSelectedWindowCode());
+	}
+
+	void showThreeOpenableWingsConfiguration(int windowChoice) {
+		resetWindowConfiguration();
+		openConfigurationPane_3_OpenableWings();
+		windowVariantChoice = windowChoice;
+		banInputIntoUnusedTextFieldsInWindowConfigurationArea(windowVariantChoice);
+		infoText.setText(printInformationAccordingToSelectedWindowCode());
+	}
+
+	void showFourOpenableWingsConfiguration(int windowChoice) {
+		resetWindowConfiguration();
+		openConfigurationPane_4_OpenableWings();
+		windowVariantChoice = windowChoice;
+		banInputIntoUnusedTextFieldsInWindowConfigurationArea(windowVariantChoice);
+		infoText.setText(printInformationAccordingToSelectedWindowCode());
 	}
 
 	/**
