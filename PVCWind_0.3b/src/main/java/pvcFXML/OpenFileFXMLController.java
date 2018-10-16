@@ -43,10 +43,7 @@ public class OpenFileFXMLController {
 
 	@FXML
 	void openFile(ActionEvent event) {
-		// Reset all
-		application.Main.mainController.resetDataForMoneyPerSqmAndLM();
-		application.Main.mainController.deleteAllItems();
-		application.Main.mainController.getInfoText().setText("");
+		application.Main.mainController.refreshGUI();
 		// Decode XML
 		openXMLFileContainingInstanceOfClassOrder(
 				"./saved_orders/" + filesListView.getSelectionModel().getSelectedItem().toString());
