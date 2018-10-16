@@ -168,5 +168,13 @@ public class Order {
 	public double calculateTotalPriceOrder() {
 		return totalSqMGlass * pricePerSqMGlass + totalLMFrame * pricePerLMFrame;
 	}
+	
+	public void setTotalValues() {
+		this.setTotalSqMGlass(this.calculateTotalSqMGlass());
+		this.setTotalLMFrame(this.calculateTotalLMFrame());
+		this.setTotalPriceGlass(this.calculateTotalPriceGlass());
+		this.setTotalPriceFrame(this.calculateTotalPriceFrame());
+		this.setTotalPriceOrder(this.calculateTotalPriceOrder());
+	}
 
 }
