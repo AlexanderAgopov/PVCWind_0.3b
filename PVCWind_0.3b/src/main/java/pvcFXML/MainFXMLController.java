@@ -496,25 +496,17 @@ public class MainFXMLController {
 
 	@FXML
 	void acceptPVCWindowConfiguration(ActionEvent event) {
-		application.Main.order.getOrderList().add(createNewWindow());
-		application.Main.order.getOrderList().get(application.Main.order.getOrderList().size() - 1)
-				.setHorizontal(isHorizontal());
+		application.Main.order.addItem(createNewWindow());
+		application.Main.order.getLastItem().setHorizontal(isHorizontal());
 		try {
-			calculateWindowGlassAndFrame(
-					application.Main.order.getOrderList().get(application.Main.order.getOrderList().size() - 1));
-			calculateThisWindowPrice(
-					application.Main.order.getOrderList().get(application.Main.order.getOrderList().size() - 1));
+			calculateWindowGlassAndFrame(application.Main.order.getLastItem());
+			calculateThisWindowPrice(application.Main.order.getLastItem());
 			int t = application.Main.order.getOrderList().size();
-			String temp = t + ". " + application.Main.order.getOrderList()
-					.get(application.Main.order.getOrderList().size() - 1).toString();
+			String temp = t + ". " + application.Main.order.getLastItem().toString();
 			application.Main.observableList.add(temp);
 			orderListView.setItems(application.Main.observableList);
 			orderListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-			allowInputIntoAllTextFieldsInWindowConfigurationArea();
-			resetWindowConfiguration();
-			windowVariantChoice = 0;
-			calculateTotalValues();
-			showResults();
+			refreshGUI();
 		} catch (NumberFormatException nfe) {
 			infoText.setText("Грешка! Опитвате се да въведете невалидни данни. Моля опитайте отново.");
 		}
@@ -961,6 +953,14 @@ public class MainFXMLController {
 		mainLevsPerSqMText
 				.setText(String.format("%.2f лв./м%c", application.Main.order.getPricePerSqMGlass(), '\u00B2'));
 		mainLevsPerLMText.setText(application.Main.order.getPricePerLMFrame() + " лв./л.м");
+	}
+	
+	void refreshGUI() {
+		allowInputIntoAllTextFieldsInWindowConfigurationArea();
+		resetWindowConfiguration();
+		windowVariantChoice = 0;
+		calculateTotalValues();
+		showResults();
 	}
 
 	void loadFXML(String fxmlFilePath) {
