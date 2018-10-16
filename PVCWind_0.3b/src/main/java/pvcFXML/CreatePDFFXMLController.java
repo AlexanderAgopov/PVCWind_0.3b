@@ -26,14 +26,17 @@ public class CreatePDFFXMLController {
 
 	@FXML
 	void cancel(ActionEvent event) {
-		Stage stage = (Stage) cancelButton.getScene().getWindow();
-		stage.close();
+		closeStage();
 	}
 
 	@FXML
 	void createPDFDoc(ActionEvent event) {
 		application.Main.pdfGenerator.createPDF(pdfTextField.getText(), application.Main.observableList);
-		Stage stage = (Stage) createButton.getScene().getWindow();
+		closeStage();
+	}
+
+	void closeStage() {
+		Stage stage = (Stage) cancelButton.getScene().getWindow();
 		stage.close();
 	}
 
