@@ -271,7 +271,6 @@ public class MainFXMLController {
 		deleteAllItems();
 		infoText.setText("");
 		showResults();
-
 	}
 
 	@FXML
@@ -547,29 +546,29 @@ public class MainFXMLController {
 
 	}
 
-	void openConfigurationUnopenableWindow() {
+	private void openConfigurationUnopenableWindow() {
 		pvcWindowDimensionsPane.setVisible(true);
 	}
 
-	void openConfigurationPane_1_OpenableWing() {
+	private void openConfigurationPane_1_OpenableWing() {
 		pvcWindowDimensionsPane.setVisible(true);
 		wing1Pane.setVisible(true);
 	}
 
-	void openConfigurationPane_2_OpenableWings() {
+	private void openConfigurationPane_2_OpenableWings() {
 		pvcWindowDimensionsPane.setVisible(true);
 		wing1Pane.setVisible(true);
 		wing2Pane.setVisible(true);
 	}
 
-	void openConfigurationPane_3_OpenableWings() {
+	private void openConfigurationPane_3_OpenableWings() {
 		pvcWindowDimensionsPane.setVisible(true);
 		wing1Pane.setVisible(true);
 		wing2Pane.setVisible(true);
 		wing3Pane.setVisible(true);
 	}
 
-	void openConfigurationPane_4_OpenableWings() {
+	private void openConfigurationPane_4_OpenableWings() {
 		pvcWindowDimensionsPane.setVisible(true);
 		wing1Pane.setVisible(true);
 		wing2Pane.setVisible(true);
@@ -577,7 +576,7 @@ public class MainFXMLController {
 		wing4Pane.setVisible(true);
 	}
 
-	void resetWindowConfiguration() {
+	private void resetWindowConfiguration() {
 		// Hide all elements in the PVC window configuration area of the GUI.
 		pvcWindowDimensionsPane.setVisible(false);
 		wing1Pane.setVisible(false);
@@ -606,7 +605,7 @@ public class MainFXMLController {
 		infoText.setText("");
 	}
 
-	void banInputIntoUnusedTextFieldsInWindowConfigurationArea(int windowVariantChoice) {
+	private void banInputIntoUnusedTextFieldsInWindowConfigurationArea(int windowVariantChoice) {
 		if (windowVariantChoice % 2 == 1) {
 			wing1HeightTF.setVisible(false);
 			wing2HeightTF.setVisible(false);
@@ -628,7 +627,7 @@ public class MainFXMLController {
 		}
 	}
 
-	void allowInputIntoAllTextFieldsInWindowConfigurationArea() {
+	private void allowInputIntoAllTextFieldsInWindowConfigurationArea() {
 		wing1HeightTF.setEditable(true);
 		wing2HeightTF.setEditable(true);
 		wing3HeightTF.setEditable(true);
@@ -639,7 +638,7 @@ public class MainFXMLController {
 		wing4WidthTF.setEditable(true);
 	}
 
-	String printInformationAccordingToSelectedWindowCode() {
+	private String printInformationAccordingToSelectedWindowCode() {
 		int n1 = 0;
 		int n2 = 0;
 		int n3 = 0;
@@ -660,7 +659,7 @@ public class MainFXMLController {
 		}
 	}
 
-	String printWindowType(int n1) {
+	private String printWindowType(int n1) {
 		switch (n1) {
 		case 0:
 			return "Врата";
@@ -677,7 +676,7 @@ public class MainFXMLController {
 		}
 	}
 
-	String printNumberOfOpenableWings(int n2) {
+	private String printNumberOfOpenableWings(int n2) {
 		switch (n2) {
 		case 0:
 			return "неотваряем";
@@ -694,7 +693,7 @@ public class MainFXMLController {
 		}
 	}
 
-	String printWindowPosition(int n3) {
+	private String printWindowPosition(int n3) {
 		switch (n3) {
 		case 0:
 			return ", вертикално разположение.";
@@ -705,14 +704,14 @@ public class MainFXMLController {
 		}
 	}
 
-	void showUnopenableWindowConfiguration(int windowChoice) {
+	private void showUnopenableWindowConfiguration(int windowChoice) {
 		resetWindowConfiguration();
 		openConfigurationUnopenableWindow();
 		windowVariantChoice = windowChoice;
 		infoText.setText(printInformationAccordingToSelectedWindowCode());
 	}
 
-	void showOneOpenableWingConfiguration(int windowChoice) {
+	private void showOneOpenableWingConfiguration(int windowChoice) {
 		resetWindowConfiguration();
 		openConfigurationPane_1_OpenableWing();
 		windowVariantChoice = windowChoice;
@@ -720,7 +719,7 @@ public class MainFXMLController {
 		infoText.setText(printInformationAccordingToSelectedWindowCode());
 	}
 
-	void showTwoOpenableWingsConfiguration(int windowChoice) {
+	private void showTwoOpenableWingsConfiguration(int windowChoice) {
 		resetWindowConfiguration();
 		openConfigurationPane_2_OpenableWings();
 		windowVariantChoice = windowChoice;
@@ -728,7 +727,7 @@ public class MainFXMLController {
 		infoText.setText(printInformationAccordingToSelectedWindowCode());
 	}
 
-	void showThreeOpenableWingsConfiguration(int windowChoice) {
+	private void showThreeOpenableWingsConfiguration(int windowChoice) {
 		resetWindowConfiguration();
 		openConfigurationPane_3_OpenableWings();
 		windowVariantChoice = windowChoice;
@@ -736,7 +735,7 @@ public class MainFXMLController {
 		infoText.setText(printInformationAccordingToSelectedWindowCode());
 	}
 
-	void showFourOpenableWingsConfiguration(int windowChoice) {
+	private void showFourOpenableWingsConfiguration(int windowChoice) {
 		resetWindowConfiguration();
 		openConfigurationPane_4_OpenableWings();
 		windowVariantChoice = windowChoice;
@@ -750,7 +749,7 @@ public class MainFXMLController {
 	 * 
 	 * @param win - an instance of class PVCWindow or its child classes
 	 */
-	void setWindowGlassAndFrameValues(PVCWindow win) throws NumberFormatException {
+	private void setWindowGlassAndFrameValues(PVCWindow win) throws NumberFormatException {
 		// Read from text fields and set the instance variables
 		win.setWidth(Double.parseDouble(fullWidthTF.getText()));
 		win.setHeight(Double.parseDouble(fullHeightTF.getText()));
@@ -771,13 +770,13 @@ public class MainFXMLController {
 	 * 
 	 * @param win - an instance of class PVCWindow or its child classes
 	 */
-	void calculateThisWindowPrice(PVCWindow win) throws NumberFormatException {
+	private void calculateThisWindowPrice(PVCWindow win) throws NumberFormatException {
 		double thisWindowPrice = win.calculateWindowPrice(application.Main.order.getPricePerSqMGlass(),
 				application.Main.order.getPricePerLMFrame());
 		win.setWindowPrice(thisWindowPrice);
 	}
 
-	PVCWindow createNewWindow() {
+	private PVCWindow createNewWindow() {
 		switch (windowVariantChoice) {
 		case 0:
 			return new PVCDoor();
@@ -845,7 +844,7 @@ public class MainFXMLController {
 	 * @return true if the user has chosen to create a window with horizontal
 	 *         position
 	 */
-	boolean isHorizontal() {
+	private boolean isHorizontal() {
 		switch (windowVariantChoice) {
 		case 201:
 			return true;
@@ -900,7 +899,7 @@ public class MainFXMLController {
 		}
 	}
 
-	void showResults() {
+	protected void showResults() {
 		totalSqMGlassText.setText(String.format("%.3f м%c", application.Main.order.getTotalSqMGlass(), '\u00B2'));
 		totalLMFrameText.setText(String.format("%.2f л.м", application.Main.order.getTotalLMFrame()));
 		totalGlassPriceText.setText(String.format("%.2f лв.", application.Main.order.getTotalPriceGlass()));
@@ -908,7 +907,7 @@ public class MainFXMLController {
 		finalPriceText.setText(String.format("%.2f лв.", application.Main.order.getTotalPriceOrder()));
 	}
 
-	int extractNumberFromString(String sourceString) {
+	private int extractNumberFromString(String sourceString) {
 		String temp1 = sourceString;
 		String[] temp = temp1.split("\\D+");
 		String temp2 = "";
@@ -918,7 +917,7 @@ public class MainFXMLController {
 		return Integer.parseInt(temp2);
 	}
 
-	void readAndShowOrderContents() {
+	protected void readAndShowOrderContents() {
 		for (int i = 0; i < application.Main.order.getOrderList().size(); i++) {
 			// Create string with item indexing starting from 1
 			String temp = (i + 1) + ". " + application.Main.order.getOrderList().get(i).toString();
@@ -929,7 +928,7 @@ public class MainFXMLController {
 		showResults();
 	}
 
-	void deleteAllItems() {
+	private void deleteAllItems() {
 		application.Main.order.getOrderList().removeAll(application.Main.order.getOrderList());
 		orderListView.getItems().removeAll(application.Main.observableList);
 		application.Main.observableList.removeAll(application.Main.observableList);
@@ -937,7 +936,7 @@ public class MainFXMLController {
 		showResults();
 	}
 
-	void resetDataForMoneyPerSqmAndLM() {
+	private void resetDataForMoneyPerSqmAndLM() {
 		application.Main.order.setPricePerSqMGlass(0);
 		application.Main.order.setPricePerLMFrame(0);
 		glassPriceField.setText("");
@@ -947,7 +946,7 @@ public class MainFXMLController {
 		mainLevsPerLMText.setText(application.Main.order.getPricePerLMFrame() + " лв./л.м");
 	}
 
-	void refreshGUI() {
+	protected void refreshGUI() {
 		allowInputIntoAllTextFieldsInWindowConfigurationArea();
 		resetWindowConfiguration();
 		windowVariantChoice = 0;
@@ -955,7 +954,7 @@ public class MainFXMLController {
 		showResults();
 	}
 
-	void loadFXML(String fxmlFilePath) {
+	private void loadFXML(String fxmlFilePath) {
 		try {
 			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlFilePath));
 			Parent root = (Parent) fxmlLoader.load();
