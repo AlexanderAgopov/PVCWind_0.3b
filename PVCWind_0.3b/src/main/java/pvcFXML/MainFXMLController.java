@@ -322,7 +322,7 @@ public class MainFXMLController {
 		for (PVCWindow w : application.Main.order.getOrderList()) {
 			calculateThisWindowPrice(w);
 		}
-		calculateTotalValues();
+		application.Main.order.setTotalValues();
 		orderListView.getItems().removeAll(application.Main.observableList);
 		readAndShowOrderContents();
 		showResults();
@@ -343,7 +343,7 @@ public class MainFXMLController {
 		for (PVCWindow w : application.Main.order.getOrderList()) {
 			calculateThisWindowPrice(w);
 		}
-		calculateTotalValues();
+		application.Main.order.setTotalValues();
 		orderListView.getItems().removeAll(application.Main.observableList);
 		readAndShowOrderContents();
 		showResults();
@@ -539,7 +539,7 @@ public class MainFXMLController {
 	@FXML
 	void calculateOrder(ActionEvent event) {
 		try {
-			calculateTotalValues();
+			application.Main.order.setTotalValues();
 			showResults();
 		} catch (NullPointerException npe) {
 			infoText.setText("Заявката е празна! Моля добавете артикул.");
@@ -900,14 +900,6 @@ public class MainFXMLController {
 		}
 	}
 
-	void calculateTotalValues() {
-		application.Main.order.setTotalSqMGlass(application.Main.order.calculateTotalSqMGlass());
-		application.Main.order.setTotalLMFrame(application.Main.order.calculateTotalLMFrame());
-		application.Main.order.setTotalPriceGlass(application.Main.order.calculateTotalPriceGlass());
-		application.Main.order.setTotalPriceFrame(application.Main.order.calculateTotalPriceFrame());
-		application.Main.order.setTotalPriceOrder(application.Main.order.calculateTotalPriceOrder());
-	}
-
 	void showResults() {
 		totalSqMGlassText.setText(String.format("%.3f м%c", application.Main.order.getTotalSqMGlass(), '\u00B2'));
 		totalLMFrameText.setText(String.format("%.2f л.м", application.Main.order.getTotalLMFrame()));
@@ -933,7 +925,7 @@ public class MainFXMLController {
 			application.Main.observableList.add(i, temp);
 		}
 		orderListView.setItems(application.Main.observableList);
-		calculateTotalValues();
+		application.Main.order.setTotalValues();
 		showResults();
 	}
 
@@ -941,7 +933,7 @@ public class MainFXMLController {
 		application.Main.order.getOrderList().removeAll(application.Main.order.getOrderList());
 		orderListView.getItems().removeAll(application.Main.observableList);
 		application.Main.observableList.removeAll(application.Main.observableList);
-		calculateTotalValues();
+		application.Main.order.setTotalValues();
 		showResults();
 	}
 
@@ -959,7 +951,7 @@ public class MainFXMLController {
 		allowInputIntoAllTextFieldsInWindowConfigurationArea();
 		resetWindowConfiguration();
 		windowVariantChoice = 0;
-		calculateTotalValues();
+		application.Main.order.setTotalValues();
 		showResults();
 	}
 
