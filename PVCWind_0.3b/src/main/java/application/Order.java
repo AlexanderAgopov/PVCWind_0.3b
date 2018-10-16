@@ -4,8 +4,9 @@ import java.util.ArrayList;
 
 /**
  * The objects of class Order represent a trade orders of multiple PVC windows
- * and doors. The instance variable 'orderList' of type ArrayList<PVCWindow> stores references to instances
- * of class PVCWindow and its child classes created at runtime.
+ * and doors. The instance variable 'orderList' of type ArrayList<PVCWindow>
+ * stores references to instances of class PVCWindow and its child classes
+ * created at runtime.
  * 
  * @author a
  *
@@ -99,6 +100,14 @@ public class Order {
 
 	public void setTotalPriceOrder(double totalPriceOrder) {
 		this.totalPriceOrder = totalPriceOrder;
+	}
+
+	public PVCWindow getLastItem() {
+		return this.orderList.get(this.orderList.size() - 1);
+	}
+	
+	public void addItem(PVCWindow win) {
+		this.orderList.add(win);
 	}
 
 	/**
