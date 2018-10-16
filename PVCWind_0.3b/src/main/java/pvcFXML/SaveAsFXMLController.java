@@ -30,16 +30,13 @@ public class SaveAsFXMLController {
 
 	@FXML
 	void cancel(ActionEvent event) {
-		Stage stage = (Stage) cancelButton.getScene().getWindow();
-		stage.close();
+		closeStage();
 	}
 
 	@FXML
 	void save(ActionEvent event) {
-		String fileName = fileNameTextField.getText();
-		currentOrderToXMLFile(fileName);
-		Stage stage = (Stage) saveButton.getScene().getWindow();
-		stage.close();
+		currentOrderToXMLFile(fileNameTextField.getText());
+		closeStage();
 	}
 
 	void currentOrderToXMLFile(String fileName) {
@@ -53,6 +50,11 @@ public class SaveAsFXMLController {
 		} catch (IOException ioe) {
 			fileNameTextField.setText("Възникна грешка при запазването на поръчката във файл!");
 		}
+	}
+	
+	void closeStage() {
+		Stage stage = (Stage) cancelButton.getScene().getWindow();
+		stage.close();
 	}
 
 }
