@@ -32,7 +32,7 @@ public class Main extends Application {
 	// it from other controller classes
 	public static MainFXMLController mainController;
 
-	public static OrderToPDF pdfGenerator = new OrderToPDF();
+	public static PDFGenerator pdfGenerator = new PDFGenerator();
 
 	// The following observable list holds references to the string representations
 	// of
