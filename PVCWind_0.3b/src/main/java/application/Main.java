@@ -28,7 +28,7 @@ import javafx.scene.Scene;
  */
 public class Main extends Application {
 
-	// Create an instance of the MainFXMLController class in order to have access to
+	// Create an instance of MainFXMLController class in order to have access to
 	// it from other controller classes
 	public static MainFXMLController mainController;
 
@@ -47,8 +47,8 @@ public class Main extends Application {
 	// OpenFileFXMLController
 	public static ObservableList<String> fileList = FXCollections.observableArrayList();
 
-	// Create an instance of the MainFXMLController class in order to have access to
-	// it from all controller classes
+	// Create an instance of Order class to be accessible from all controller
+	// classes
 	public static Order order = new Order();
 
 	@Override
