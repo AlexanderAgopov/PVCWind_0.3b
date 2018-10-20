@@ -495,7 +495,7 @@ public class MainFXMLController {
 
 	@FXML
 	void acceptPVCWindowConfiguration(ActionEvent event) {
-		application.Main.order.addItem(createNewWindow());
+		application.Main.order.getOrderList().add(createNewWindow());
 		application.Main.order.getLastItem().setHorizontal(isHorizontal());
 		try {
 			setWindowGlassAndFrameValues(application.Main.order.getLastItem());
